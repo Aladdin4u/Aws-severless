@@ -1,6 +1,5 @@
 import type { AWS } from '@serverless/typescript';
-
-import hello from '@functions/hello';
+import functions from './serverless/functions';
 
 const serverlessConfiguration: AWS = {
   service: 'aws-severless',
@@ -9,7 +8,7 @@ const serverlessConfiguration: AWS = {
   provider: {
     name: 'aws',
     runtime: 'nodejs14.x',
-    profile: 'serverlessAladdin',
+    profile: '',
     region: "eu-central-1",
     apiGateway: {
       minimumCompressionSize: 1024,
@@ -21,7 +20,7 @@ const serverlessConfiguration: AWS = {
     },
   },
   // import the function via paths
-  functions: { hello },
+  functions,
   package: { individually: true },
   custom: {
     esbuild: {
